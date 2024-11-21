@@ -30,3 +30,36 @@ A full-stack task management application with user authentication, task manageme
 ```bash
 git clone https://github.com/Pranav-Khude/task-manager-fullstack.git
 cd task-manager-fullstack
+```
+### Install dependencies:
+```
+# Backend
+cd backend
+npm install
+
+# Frontend
+cd ../frontend
+npm install
+```
+### Configure environment variables:
+#### Backend .env
+```
+PORT=5000
+JWT_SECRET=your_secret
+MONGO_URI=your_mongodb_uri
+```
+#### Frontend .env:
+```
+REACT_APP_API_URL=http://localhost:5000/api
+```
+### Start development servers
+```
+# Backend
+cd backend
+npm start
+
+# Frontend
+cd frontend
+npm start
+```
+
