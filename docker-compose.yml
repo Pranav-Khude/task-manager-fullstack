@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: task-manager-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - JWT_SECRET=TaskManager
+      - MONGO_URI=mongodb+srv://pranavkhude18:WMLR4uRlmH0SLLlW@taskmanager.mnv9k.mongodb.net/?retryWrites=true&w=majority&appName=TaskManager
+      - CORS_ORIGIN=http://localhost:3000/
+    networks:
+      - app-network
+
+  frontend:
+    build: ./frontend
+    container_name: task-manager-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - REACT_APP_API_URL=http://localhost:5000/api
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
